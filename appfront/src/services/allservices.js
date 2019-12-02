@@ -41,6 +41,7 @@ export default class AllService {
       predictCT: '/detecthit/predCT/',
       getOriginImg: '/detecthit/getOriginImg/',
       getResultImg: '/detecthit/getResultImg/',
+      queryDetectStatus: '/detecthit/queryDetectStatus/',
 
       coverCT: '/tracer/cover/',
       getCoverResultById: '/tracer/getCoverResultById/',
@@ -431,6 +432,15 @@ export default class AllService {
   }
   getResultImg(params, callback) {
     var url = this.host + this.method.getResultImg;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function (isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  queryDetectStatus(params, callback) {
+    var url = this.host + this.method.queryDetectStatus;
     var type = 'post';
     return this.bizRequest(url, params, type, function (isOk, data) {
       if (callback) {

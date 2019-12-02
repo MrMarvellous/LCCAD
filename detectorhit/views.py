@@ -174,6 +174,29 @@ def extract_ct(request):
     return JsonResponse(response)
 
 
+def queryDetectStatus(request):
+    response = {}
+    if request.method == 'POST':
+        reqform = simplejson.loads(request.body)
+        ct_id = reqform['ct_id']
+        try:
+            ct = CT_info.objects.get(id=ct_id)
+            if ct.has_detected == 1:
+                response['data'] = 1
+                response['error_num'] = 0
+                response['msg'] = 'success'
+            else:
+                response['data'] = 0
+                response['error_num'] = 0
+                response['msg'] = 'success'
+            # return JsonResponse(response)
+        except Exception as e:
+            response['msg'] = str(e)
+            response['error_num'] = 1
+            return JsonResponse(response)
+    return JsonResponse(response)
+
+
 def get_ct_info(request):
     response = {}
     if request.method == 'POST':

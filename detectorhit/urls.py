@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^predCT/$', views.predict_ct, name='predCT'),
     url(r'^getOriginImg/$', views.get_origin_imgs, name='getOriginImg'),
     url(r'^getResultImg/$', views.get_result_imgs, name='getResultImg'),
+    url(r'^queryDetectStatus/$', views.queryDetectStatus, name='queryDetectStatus'),
 
 ]
